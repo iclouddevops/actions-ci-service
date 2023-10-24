@@ -7,7 +7,7 @@ import (
 )
 
 func HandlerPing(ctx *gin.Context) {
-	// return data object hello world
+	// return data object hello
 	ctx.JSON(http.StatusOK, gin.H{
 		"code":    0,
 		"message": "pong",
