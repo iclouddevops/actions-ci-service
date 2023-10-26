@@ -15,10 +15,15 @@ jobs:
     steps:
       - name: Pull Code
         uses: actions/checkout@v4
+      - name: Setup Python version
+        uses:  actions/setup-python@v4
+        with:
+          python-version: '3.9'
       - name: Check Code
         run: |
           pwd
           ls -lh
+          python --version
       
       
 
