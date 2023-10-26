@@ -1,0 +1,15 @@
+
+name: CI
+
+on:
+  push:
+    branches:
+      - "develop"
+
+jobs:
+  run-mlops:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test steps
+        run: |
+          ls -lh
