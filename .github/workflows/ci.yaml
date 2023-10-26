@@ -2,20 +2,21 @@ name: CI
 
 on:
   push:
-    branches: ['develop']
-  pull_request:
-    branches: ['develop']
+    branches: ['feature']
+  # pull_request:
+  #   branches: ['develop']
 
 jobs:
   run-ops:
     # 设置运行jobs 指定runner
     runs-on: ubuntu-latest
     steps:
-      - name: first step
+      - name: Pull Code
+        uses: actions/checkout@v4
+      - name: Check Code
         run: |
-          echo "first step"
-      - name: second step
-        run: |
-          python --version
+          pwd
+          ls -lh
+      
 
       
