@@ -1,6 +1,6 @@
 name: CI
 
-run-name: ${{ github.actor }} is learning GitHub Actions
+#run-name: ${{ github.actor }} is learning GitHub Actions
 
 on:
   push:
@@ -13,17 +13,27 @@ jobs:
     # 设置运行jobs 指定runner
     runs-on: ubuntu-latest
     steps:
+      # 拉去代码到本地
       - name: Pull Code
         uses: actions/checkout@v4
+      # 设置软件版本
       - name: Setup Python version
         uses:  actions/setup-python@v4
         with:
           python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
       - name: Check Code
         run: |
           pwd
           ls -lh
           python --version
+      - name: Install requirements.txt
+        run: pip install -r requirements.txt
+      - name: Exec Main
+        run: |
+          python main.py
+
+
       
       
 
