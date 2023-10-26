@@ -1,5 +1,7 @@
 name: CI
 
+run-name: ${{ github.actor }} is learning GitHub Actions
+
 on:
   push:
     branches: ['feature']
@@ -17,6 +19,7 @@ jobs:
         run: |
           pwd
           ls -lh
+      
       
 
       
