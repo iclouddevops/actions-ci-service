@@ -34,7 +34,7 @@ jobs:
         env:
           super_secret: ${{ secrets.SUPERSECRET }}
           org_secret: ${{ secrets.ORG_SECRET }}
-          org_env: ${{ env.ORG_ENV }}
+          org_env: ${{ secrets.ORG_ENV }}
         run: |
           echo "super_secret $super_secret"
           echo "org_secret $org_secret"
