@@ -33,8 +33,10 @@ jobs:
       - name: Retrieve secrets
         env:
           super_secret: ${{ secrets.SUPERSECRET }}
+          org_secret: ${{ secrets.ORG_SECRET }}
         run: |
-          echo "secret $super_secret"
+          echo "super_secret $super_secret"
+          echo "org_secret $org_secret"
 
       - name: Install requirements.txt
         run: |
