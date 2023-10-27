@@ -1,0 +1,24 @@
+name: Dependency
+
+on:
+  push:
+    branches:
+      - "feature"
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "setup"
+
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "build"
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "test"
