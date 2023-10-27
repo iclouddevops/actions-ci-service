@@ -37,8 +37,10 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-      - name: Output Env
-        run: echo "${{ env.ORG_ENV }}"
+      - name: Dump Vars context
+        env:
+          VARS_CONTEXT: ${{ toJson(vars) }}
+        run: echo "$VARS_CONTEXT"
   one:
     runs-on: ubuntu-latest
     steps:
