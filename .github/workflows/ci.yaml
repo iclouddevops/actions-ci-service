@@ -52,6 +52,9 @@ jobs:
 
         working-directory: ./scripts/   # 更改当前工作目录
       
+      - name: Print env
+        run: env
+      
       
 
       
