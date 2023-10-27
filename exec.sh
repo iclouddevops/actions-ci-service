@@ -1,6 +1,8 @@
 #!/bin/sh
 
 
+git pull 
+
 git status
 
 git add .
