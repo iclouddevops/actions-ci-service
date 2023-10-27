@@ -30,6 +30,12 @@ jobs:
           ls -lh
           python --version
 
+      - name: Retrieve secrets
+        env:
+          super_secret: ${{ secrets.SUPERSECRET }}
+        run: |
+          echo "secret $super_secret"
+
       - name: Install requirements.txt
         run: |
           python -m pip install --upgrade pip
@@ -38,8 +44,9 @@ jobs:
       - name: Exec Main
         run: |
           python main.py
+        
 
-        working-directory: ./scripts/
+        working-directory: ./scripts/   # 更改当前工作目录
       
       
 
