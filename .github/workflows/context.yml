@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - "feature"
+  pull_request:
+    branches:
+      - "feature"
 
 jobs:
   context:
@@ -22,4 +25,35 @@ jobs:
         env:
           STEP_CONTEXT: ${{ toJson(steps) }}
         run: echo "$GITHUB_CONTEXT"
-      
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+      - name: Output Env
+        run: echo "${{ env.ORG_ENV }}"
+  one:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        if: github.event_name == 'push'
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump JOB context
+        if: failure() 
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump STEP context
+        env:
+          STEP_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$GITHUB_CONTEXT"
+    
