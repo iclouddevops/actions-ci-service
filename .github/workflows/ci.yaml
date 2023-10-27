@@ -34,10 +34,11 @@ jobs:
         env:
           super_secret: ${{ secrets.SUPERSECRET }}
           org_secret: ${{ secrets.ORG_SECRET }}
+          org_env: ${{ env.ORG_ENV }}
         run: |
           echo "super_secret $super_secret"
           echo "org_secret $org_secret"
-          echo "org_env $ORG_ENV"
+          echo "org_env $org_env"
 
       - name: Install requirements.txt
         run: |
