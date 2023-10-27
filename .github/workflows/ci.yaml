@@ -37,6 +37,7 @@ jobs:
         run: |
           echo "super_secret $super_secret"
           echo "org_secret $org_secret"
+          echo "org_env $ORG_ENV"
 
       - name: Install requirements.txt
         run: |
