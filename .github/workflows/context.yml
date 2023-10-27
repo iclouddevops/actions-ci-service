@@ -11,7 +11,6 @@ on:
 jobs:
   context:
     runs-on: ubuntu-latest
-
     steps:
       - name: Dump GitHub context
         env:
@@ -41,6 +40,10 @@ jobs:
         env:
           VARS_CONTEXT: ${{ toJson(vars) }}
         run: echo "$VARS_CONTEXT"
+      - name: Dump Inputs context
+        env:
+          INPUTS_CONTEXT: ${{ toJson(inputs) }}
+        run: echo "$INPUTS_CONTEXT"
   one:
     runs-on: ubuntu-latest
     steps:
