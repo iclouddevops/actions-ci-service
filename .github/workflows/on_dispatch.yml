@@ -35,5 +35,5 @@ jobs:
           ENVIRONMENT: ${{ inputs.environment }}
       - uses: ./.github/actions/test_main
         with:
-          TEST_STRING: ""
+          TEST_STRING: "hello world test string"
           
