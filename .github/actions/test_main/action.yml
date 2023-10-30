@@ -17,3 +17,6 @@ runs:
     - name: xxx
       run: echo "test local path file ${{ inputs.TEST_STRING }}"
       shell: bash
+    - name: show file
+      run: ls -lh
+      shell: bash
