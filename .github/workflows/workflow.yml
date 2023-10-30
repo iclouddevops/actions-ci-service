@@ -1,6 +1,9 @@
 name: Dispatch
 
-on: 
+on:
+  push:
+    branches:
+      - feature
   workflow_dispatch:
     inputs:
       logLevel:
