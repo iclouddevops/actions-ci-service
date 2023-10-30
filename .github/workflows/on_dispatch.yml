@@ -32,7 +32,7 @@ jobs:
           LEVEL: ${{ inputs.logLevel }}
           TAGS: ${{ inputs.tags }}
           ENVIRONMENT: ${{ inputs.environment }}
-      - uses: ./../actions/test_main/action
+      - uses: ./.github/actions/test_main
         with:
           TEST_STRING: ""
           

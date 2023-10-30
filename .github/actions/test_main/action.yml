@@ -17,5 +17,3 @@ runs:
     - name: xxx
       run: echo "test local path file ${{ inputs.TEST_STRING }}"
       shell: bash
-
-  
