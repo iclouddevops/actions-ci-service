@@ -1,0 +1,19 @@
+name: test local on
+
+# custom actions
+
+description: 'test local path file'
+
+
+inputs:
+  TEST_STRING:
+    description: 'cxx'
+    default: "test_string"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: xxx
+      run: echo "test local path file ${{ inputs.TEST_STRING }}"
+      shell: bash
