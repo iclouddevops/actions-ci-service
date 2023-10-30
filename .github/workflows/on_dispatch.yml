@@ -24,7 +24,7 @@ on:
       #     - "prod"
       #   required: true
   schedule:
-    - cron: '*/3 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   log-the-inputs:
