@@ -4,12 +4,16 @@ on:
   push:
     branches:
       - "feature"
+  pull_request:
+    
 
 jobs:
   setup:
+    timeout-minutes: 360
     runs-on: ubuntu-latest
     steps:
       - run: echo "setup"
+    
 
   build:
     needs: setup
