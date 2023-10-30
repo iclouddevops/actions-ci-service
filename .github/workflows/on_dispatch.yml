@@ -2,27 +2,20 @@ name: Dispatch
 
 on:
   workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
-        type: choice
-        options:
-        - info
-        - warning
-        - debug
-      tags:
-        description: 'Test scenario tags'
-        required: false
-        type: boolean  # 类型 boolean、choice、number 或 string
-      # environment:
-      #   description: 'Environment to run tests against'
-      #   type: environment
-      #   options:
-      #     - "dev"
-      #     - "prod"
-      #   required: true
+    # inputs:
+    #   logLevel:
+    #     description: 'Log level'
+    #     required: true
+    #     default: 'warning'
+    #     type: choice
+    #     options:
+    #     - info
+    #     - warning
+    #     - debug
+    #   tags:
+    #     description: 'Test scenario tags'
+    #     required: false
+    #     type: boolean  # 类型 boolean、choice、number 或 string
   schedule:
     - cron: '*/5 * * * *'
 
@@ -39,3 +32,7 @@ jobs:
           LEVEL: ${{ inputs.logLevel }}
           TAGS: ${{ inputs.tags }}
           ENVIRONMENT: ${{ inputs.environment }}
+      - uses: ./../actions/test_main/action
+        with:
+          TEST_STRING: ""
+          
