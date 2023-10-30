@@ -15,14 +15,14 @@ on:
       tags:
         description: 'Test scenario tags'
         required: false
-        type: boolean
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        options:
-          - "dev"
-          - "prod"
-        required: true
+        type: boolean  # 类型 boolean、choice、number 或 string
+      # environment:
+      #   description: 'Environment to run tests against'
+      #   type: environment
+      #   options:
+      #     - "dev"
+      #     - "prod"
+      #   required: true
 
 jobs:
   log-the-inputs:
