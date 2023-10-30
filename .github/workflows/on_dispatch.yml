@@ -19,6 +19,9 @@ on:
       environment:
         description: 'Environment to run tests against'
         type: environment
+        options:
+          - "dev"
+          - "prod"
         required: true
 
 jobs:
