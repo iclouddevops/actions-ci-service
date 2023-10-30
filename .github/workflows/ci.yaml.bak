@@ -1,0 +1,60 @@
+name: CI
+
+#run-name: ${{ github.actor }} is learning GitHub Actions
+
+on:
+  push:
+    branches: ['feature']
+  # pull_request:
+  #   branches: ['develop']
+
+jobs:
+  run-ops:
+    # 设置运行jobs 指定runner
+    runs-on: ubuntu-latest
+    steps:
+      # 拉去代码到本地
+      - name: Pull Code
+        uses: actions/checkout@v4
+
+      # 设置软件版本
+      - name: Setup Python version
+        uses:  actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip' # 缓存pip 安装的依赖
+
+      - name: Check Code
+        run: |
+          pwd
+          ls -lh
+          python --version
+
+      - name: Retrieve secrets
+        env:
+          super_secret: ${{ secrets.SUPERSECRET }}
+          org_secret: ${{ secrets.ORG_SECRET }}
+          org_env: ${{ secrets.ORG_ENV }}
+        run: |
+          echo "super_secret $super_secret"
+          echo "org_secret $org_secret"
+          echo "org_env $org_env"
+
+      - name: Install requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Exec Main
+        run: |
+          python main.py
+        
+
+        working-directory: ./scripts/   # 更改当前工作目录
+      
+      - name: Print env
+        run: env
+      
+      
+
+      

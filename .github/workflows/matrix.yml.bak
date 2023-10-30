@@ -1,0 +1,29 @@
+# 此矩阵将使用不同版本的 Node.js 多次运行作业
+name: Matrix
+
+
+on:
+  push:
+    branches:
+      - "feature"
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [14, 16]
+      # fail-fast: true  # 如果任意一个job失败，则停止其它的job运行
+      # max-parallel: 0
+        # include:
+        #   - os: xxx
+        #     node: xxx
+        # exclude:
+        #   - os: xxx
+        #     node: xxx
+    runs-on: ubuntu-latest # ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+        

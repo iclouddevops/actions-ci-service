@@ -1,0 +1,28 @@
+name: Dependency
+
+on:
+  push:
+    branches:
+      - "feature"
+  pull_request:
+    
+
+jobs:
+  setup:
+    timeout-minutes: 360
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "setup"
+    
+
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "build"
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "test"
