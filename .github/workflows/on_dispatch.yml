@@ -23,6 +23,7 @@ jobs:
   log-the-inputs:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run: |
           echo "Log level: $LEVEL"
           echo "Tags: $TAGS"
