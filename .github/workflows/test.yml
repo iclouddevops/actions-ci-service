@@ -39,5 +39,6 @@ jobs:
           name: test-report
           path: |
             ./report.html
+            ./assets
 
 
