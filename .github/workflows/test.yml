@@ -30,15 +30,13 @@ jobs:
             pip install -r ./requirements.txt
 
       - name: Test App Code
-        run: pytest -sv --html report.html --title="MLOPS Test Report"
+        run: pytest -sv --html ./report/report.html
         shell: bash
 
       - name: Archive test report
         uses: actions/upload-artifact@v3
         with:
           name: test-report
-          path: |
-            ./report.html
-            ./assets
+          path: ./report
 
 
