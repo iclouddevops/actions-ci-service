@@ -3,7 +3,10 @@ name: CI
 on: 
   push:
     branches:
-      - "feature"
+      - 'feature'
+  # pull_request:
+  #   branches:
+  #     - 'develop'
 
 jobs:
   Test:
@@ -27,7 +30,14 @@ jobs:
             pip install -r ./requirements.txt
 
       - name: Test App Code
-        run: pytest -sv 
-  
+        run: pytest -sv --html report.html
+        shell: bash
+
+      - name: Archive test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: |
+            ./report.html
 
 
