@@ -15,8 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: ls -lh
-
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v3
