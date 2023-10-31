@@ -13,3 +13,19 @@ jobs:
 
       - name: First check
         run: ls -lh
+
+      - name: Insert file
+        run: echo "1111" > test.txt
+
+      - name: Check file
+        run: |
+            ls -lh 
+
+            cat test.txt 
+
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check directory
+        run: |
+            ls -lh
