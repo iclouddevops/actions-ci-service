@@ -8,28 +8,26 @@ on:
 jobs:
   Test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8']
+      fail-fast: true
     steps:
       - uses: actions/checkout@v4
 
-      - name: First check
-        run: ls -lh
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          
 
-      - name: Insert file
-        run: echo "1111" > test.txt
-
-      - name: Check file
+      - name: Install dependencies
         run: |
-            ls -lh 
+            python -m pip install --upgrade pip
+            pip install -r ./requirements.txt
 
-            cat test.txt 
+      - name: Test App Code
+        run: pytest -sv 
+  
 
-  Build:
-    needs: Test
-    runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Check directory
-        run: |
-            ls -lh
