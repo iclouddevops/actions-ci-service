@@ -7,13 +7,13 @@ on:
 
 jobs:
   Cache-Test:
+    runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./vue-demo
-    runs-on: ubuntu-latest
+        working-directory: ./vue-demo/
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - run: ls -lh
 
