@@ -1,15 +1,15 @@
 name: CI
 
-on:
+on: 
   push:
     branches:
       - "feature"
 
-# cache 
 jobs:
   Test:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Output echo
-        run: echo "hello world"
+      - uses: actions/checkout@v4
+
+      - name: First check
+        run: ls -lh
