@@ -1,0 +1,15 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "feature"
+
+# cache 
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Output echo
+        run: echo "hello world"
