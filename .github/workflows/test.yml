@@ -24,6 +24,7 @@ jobs:
             cat test.txt 
 
   Build:
+    needs: Test
     runs-on: ubuntu-latest
     steps:
       - name: Check directory
