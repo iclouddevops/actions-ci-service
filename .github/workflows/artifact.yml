@@ -11,11 +11,11 @@ on:
 jobs:
   timestamp:
     outputs:
-      now: ${{ steps.now.outputs }}
+      now: ${{ steps.timestamp.outputs.now }}
     runs-on: ubuntu-latest
     steps:
-      - id: now
-        run: echo `date '+%Y-%m-%d %H:%M:%S'`
+      - id: timestamp
+        run: echo "now=$(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
   test:
     needs: timestamp
     runs-on: ubuntu-latest
