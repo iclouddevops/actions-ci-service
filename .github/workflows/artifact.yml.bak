@@ -1,0 +1,61 @@
+name: Artifact
+
+on: 
+  push:
+    branches:
+      - 'feature'
+  # pull_request:
+  #   branches:
+  #     - 'develop'
+
+jobs:
+  timestamp:
+    outputs:
+      now: ${{ steps.timestamp.outputs.now }}
+    runs-on: ubuntu-latest
+    steps:
+      - id: timestamp
+        run: echo "now=$(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
+  test:
+    needs: timestamp
+    runs-on: ubuntu-latest
+    environment: prod
+    permissions:
+      contents: write
+    strategy:
+      matrix:
+        python-version: ['3.8']
+      fail-fast: true
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      # - uses: pre-commit/action@v3.0.0
+
+      - name: Install dependencies
+
+        run: |
+          echo ${{ needs.timestamp.outputs.now }}
+          echo "#####"
+          python -m pip install --upgrade pip
+          pip install -r ./requirements.txt
+          env
+
+      - name: Test App Code
+        run: pytest -sv --html ./report/index.html
+
+      - name: Archive test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: ./report
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./report
+        
+
+

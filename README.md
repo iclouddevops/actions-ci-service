@@ -1,6 +1,10 @@
 # actions-ci-service
 
 
+```shell
+pip install pytest-html -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
 
 ### Git 操作命令
 #### 切换分支

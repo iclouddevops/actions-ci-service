@@ -6,3 +6,7 @@ README.md
 .enviroment.dev
 
 exec.sh
+
+venv
+.venv
+report
