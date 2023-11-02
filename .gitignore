@@ -8,5 +8,5 @@ README.md
 exec.sh
 
 venv
-
+.venv
 report
