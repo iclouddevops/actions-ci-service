@@ -19,6 +19,7 @@ jobs:
   test:
     needs: timestamp
     runs-on: ubuntu-latest
+    environment: prod
     permissions:
       contents: write
     strategy:
@@ -51,6 +52,7 @@ jobs:
           path: ./report
 
       - name: Deploy
+        if: github.ref == "main"
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
