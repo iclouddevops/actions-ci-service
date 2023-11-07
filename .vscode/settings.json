@@ -1,7 +1,0 @@
-{
-  "yaml.schemas": {
-    "https://json.schemastore.org/github-workflow.json": "file:///d%3A/test/actions-ci-service/.github/workflows/test.yml"
-  },
-  "python.analysis.autoImportCompletions": false,
-  "git.ignoreLimitWarning": true
-}
