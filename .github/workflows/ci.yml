@@ -48,8 +48,8 @@ jobs:
         with:
           name: test-report
           path: ./report
-        # env:
-        #   timestamp: ${{ needs.timestamp.outputs.now }}
+        env:
+          timestamp: ${{ needs.timestamp.outputs.now }}
 
       - name: Deploy
         if: github.ref_name == 'develop' && github.event_name == 'push'
