@@ -40,7 +40,7 @@ jobs:
           echo "#####"
           python -m pip install --upgrade pip
           pip install -r ./requirements.txt
-          env
+          
 
       - name: Test App Code
         run: pytest -sv --html ./report/index.html
