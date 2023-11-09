@@ -48,13 +48,17 @@ jobs:
           timestamp: ${{ needs.timestamp.outputs.now }}
       
       - name: Lint with Ruff
+        # lint code
         run: |
           pip install ruff
           ruff --output-format=github .
         continue-on-error: true
 
       - name: Test App Code
-        run: pytest -sv --html ./report/index.html
+        #pip install pytest pytest-cov
+        #pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+        run: |
+          pytest -sv --html ./report/index.html
 
       - name: Archive test report
         uses: actions/upload-artifact@v3
