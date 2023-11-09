@@ -20,7 +20,7 @@ jobs:
       - name: print pull request
         run: echo $PULL_REQUEST_VAR
         env:
-          PULL_REQUEST_VAR: ${{ toJson(github.event.pull_request.labels) }}
+          PULL_REQUEST_VAR: ${{ toJson(github) }}
       
   test:
     needs: timestamp
