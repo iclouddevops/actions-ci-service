@@ -18,7 +18,7 @@ jobs:
       - id: timestamp
         run: echo "now=$(date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
       - name: print pull request
-        uses: echo $PULL_REQUEST_VAR
+        run: echo $PULL_REQUEST_VAR
         env:
           PULL_REQUEST_VAR: ${{ toJson(github.event.pull_request) }}
       
