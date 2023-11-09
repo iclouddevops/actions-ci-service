@@ -22,7 +22,7 @@ jobs:
         env:
           PULL_REQUEST_VAR: ${{ toJson(github) }}
       
-  test:
+  unit-test:
     needs: timestamp
     runs-on: ubuntu-latest
     permissions:
@@ -42,14 +42,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./requirements.txt
           echo ${timestamp}
-          hello world
 
         continue-on-error: true
         env:
           timestamp: ${{ needs.timestamp.outputs.now }}
+      
+      - name: Lint with Ruff
+        run: |
+          pip install ruff
+          ruff --output-format=github .
+        continue-on-error: true
 
-        
-        
       - name: Test App Code
         run: pytest -sv --html ./report/index.html
 
