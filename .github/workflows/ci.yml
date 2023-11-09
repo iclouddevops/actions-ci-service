@@ -40,7 +40,7 @@ jobs:
           echo ${timestamp}
           hello world
 
-        continue-on-error: false
+        continue-on-error: true
         env:
           timestamp: ${{ needs.timestamp.outputs.now }}
 
