@@ -48,7 +48,7 @@ jobs:
           timestamp: ${{ needs.timestamp.outputs.now }}
       
       - name: Lint with Ruff
-        # lint 
+        # lint code ruff
         run: |
           pip install ruff
           ruff --output-format=github .
