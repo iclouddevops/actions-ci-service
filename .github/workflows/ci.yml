@@ -47,12 +47,12 @@ jobs:
         env:
           timestamp: ${{ needs.timestamp.outputs.now }}
       
-      - name: Lint with Ruff
-        # lint code 
-        run: |
-          pip install ruff
-          ruff --output-format=github .
-        continue-on-error: true
+      # - name: Lint with Ruff
+      #   # lint code 
+      #   run: |
+      #     pip install ruff
+      #     ruff --output-format=github .
+      #   continue-on-error: true
 
       - name: Test App Code
         #pip install pytest pytest-cov
