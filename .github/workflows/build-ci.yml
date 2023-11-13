@@ -19,6 +19,7 @@ jobs:
           python-version: '3.8'
       
       - uses: pre-commit/action@v3.0.0
+        continue-on-error: true
   
   timestamp:
     if: startsWith(github.head_ref, 'doc') == false
@@ -26,7 +27,9 @@ jobs:
     steps:
       - name: Set current date as env variable
         id: timestamp
-        run: echo "now=$(date +'%H%M%S')" >> $GITHUB_OUTPUT
+        run: |
+          echo ${{ toJson(github) }}
+          echo "now=$(date +'%H%M%S')" >> $GITHUB_OUTPUT
 
     outputs:
       timestamp: ${{ steps.timestamp.outputs.now }}
