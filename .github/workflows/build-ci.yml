@@ -28,8 +28,10 @@ jobs:
     steps:
       - name: Set current date as env variable
         id: timestamp
+        env:
+          GITHUB_VAR: ${{ toJson(github) }}
         run: |
-          echo ${{ toJson(github) }}
+          echo $GITHUB_VAR
           
 
     outputs:
