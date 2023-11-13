@@ -24,12 +24,13 @@ jobs:
   timestamp:
     if: startsWith(github.head_ref, 'doc') == false
     runs-on: ubuntu-20.04
+    #echo "now=$(date +'%H%M%S')" >> $GITHUB_OUTPUT
     steps:
       - name: Set current date as env variable
         id: timestamp
         run: |
           echo ${{ toJson(github) }}
-          echo "now=$(date +'%H%M%S')" >> $GITHUB_OUTPUT
+          
 
     outputs:
       timestamp: ${{ steps.timestamp.outputs.now }}
