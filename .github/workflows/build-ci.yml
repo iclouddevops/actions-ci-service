@@ -43,7 +43,9 @@ jobs:
     needs: [ pre-commit, timestamp ]
     steps:
       - name: create_workspaces
-        run: echo "create_workspaces"
+        run: |
+          echo "create_workspaces"
+          apt-get install pandoc
     env:
       TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
       VERSION: 38
@@ -57,4 +59,27 @@ jobs:
     env:
       TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
       VERSION: 39  
+
+  
+  test-workspaces-31:
+    runs-on: ubuntu-20.04
+    needs: [ pre-commit, timestamp ]
+    steps:
+      - name: create_workspaces
+        run: echo "create_workspaces"
+    env:
+      TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
+      VERSION: 39  
         
+
+  test-38:
+    runs-on: ubuntu-20.04
+    needs: [ test-workspaces-38, timestamp ]
+    steps:
+      - name: create_workspaces
+        run: echo "no_workspace or feature"
+    env:
+      TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
+      VERSION: 38
+
+  
