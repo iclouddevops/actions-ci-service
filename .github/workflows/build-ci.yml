@@ -45,7 +45,7 @@ jobs:
       - name: create_workspaces
         run: |
           echo "create_workspaces"
-          apt-get install pandoc
+          sudo apt-get install pandoc
     env:
       TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
       VERSION: 38
