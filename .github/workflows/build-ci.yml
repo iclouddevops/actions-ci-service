@@ -48,12 +48,7 @@ jobs:
           python-version: 3.8
       - name: create_workspaces
         run: |
-          echo "create_workspaces"
-          python -m pip install --upgrade pip setuptools
-          pip freeze > packages.txt
-          pip uninstall -y -r packages.txt
-          python setup.py install
-          pip freeze > frozen_requirements.txt
+          pip freeze
     env:
       TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
       VERSION: 38
