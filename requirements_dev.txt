@@ -1,0 +1,21 @@
+# Used for Development and test purposes, use pip install -e .[dev]
+azure-mgmt-alertsmanagement==1.0.0
+coverage
+black==22.8.0
+types-six
+mypy
+pytest
+pytest-cov
+pytest-mypy
+pytest-reportlog
+pytest-xdist
+twine
+pytest-flake8
+isort
+mock
+Sphinx>=2.4.0
+sphinx-rtd-theme
+PyGithub
+pandas
+urllib3==1.26.15
+ray[default]==2.2.0
