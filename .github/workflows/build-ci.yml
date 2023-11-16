@@ -50,6 +50,7 @@ jobs:
         run: |
           echo "create_workspaces"
           python setup.py install
+          pip freeze > frozen_requirements.txt
     env:
       TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
       VERSION: 38
