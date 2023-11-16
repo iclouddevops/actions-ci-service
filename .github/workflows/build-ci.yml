@@ -49,9 +49,9 @@ jobs:
       - name: create_workspaces
         run: |
           echo "create_workspaces"
-           python -m pip install --upgrade pip setuptools
-           pip freeze > packages.txt
-           pip uninstall -y -r packages.txt
+          python -m pip install --upgrade pip setuptools
+          pip freeze > packages.txt
+          pip uninstall -y -r packages.txt
           python setup.py install
           pip freeze > frozen_requirements.txt
     env:
