@@ -42,11 +42,14 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [ pre-commit, timestamp ]
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
       - name: create_workspaces
         run: |
           echo "create_workspaces"
-          sudo apt-get install pandoc
-          pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+          python setup.py install
     env:
       TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
       VERSION: 38
