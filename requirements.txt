@@ -26,3 +26,4 @@ overrides
 types-six
 six
 pyhocon
+anyio==3.*
