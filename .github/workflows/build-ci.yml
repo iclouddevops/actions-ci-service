@@ -43,17 +43,14 @@ jobs:
     needs: [ pre-commit, timestamp ]
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
-        with:
-          python-version: 3.8
+      # - uses: actions/setup-python@v3
+      #   with:
+      #     python-version: 3.8
       - name: create_workspaces
         run: |
-          whoami
-          python -m pip install --upgrade pip
-          python -m pip install --upgrade setuptools
-          python -m pip install -r requirements_dev.txt
-          python setup.py install
-          pip freeze
+          python --version
+          which python
+          pip --version
     env:
       TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
       VERSION: 38
