@@ -31,6 +31,7 @@ jobs:
         env:
           GITHUB_VAR: ${{ toJson(github) }}
         run: |
+          ls -lha /home/runner
           echo $GITHUB_VAR
           echo "now=$(date +'%H%M%S')" >> $GITHUB_OUTPUT
           
