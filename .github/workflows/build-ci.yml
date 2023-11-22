@@ -2,8 +2,11 @@
 name: build-cicd-pipeline-new
 
 on:
-  push:
-    branches: ["feature"]
+  # push:
+  #   branches: ["feature"]
+  pull_request:
+    branches:
+      - develop
 
 jobs:
   pre-commit:
