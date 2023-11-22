@@ -1,0 +1,94 @@
+#CICD pipeline
+name: build-cicd-pipeline-new
+
+on:
+  # push:
+  #   branches: ["feature"]
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  pre-commit:
+    if: startsWith(github.head_ref, 'doc') == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+      
+      - uses: pre-commit/action@v3.0.0
+        continue-on-error: true
+  
+  timestamp:
+    if: startsWith(github.head_ref, 'doc') == false
+    runs-on: ubuntu-20.04
+    #echo "now=$(date +'%H%M%S')" >> $GITHUB_OUTPUT
+    steps:
+      - name: Set current date as env variable
+        id: timestamp
+        env:
+          GITHUB_VAR: ${{ toJson(github) }}
+        run: |
+          ls -lha /home/runner
+          echo $GITHUB_VAR
+          echo "now=$(date +'%H%M%S')" >> $GITHUB_OUTPUT
+          
+
+    outputs:
+      timestamp: ${{ steps.timestamp.outputs.now }}
+
+  test-workspaces-38:
+    runs-on: ubuntu-20.04
+    needs: [ pre-commit, timestamp ]
+    steps:
+      - uses: actions/checkout@v3
+      # - uses: actions/setup-python@v3
+      #   with:
+      #     python-version: 3.8
+      - name: create_workspaces
+        run: |
+          python --version
+          which python
+          pip --version
+    env:
+      TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
+      VERSION: 38
+
+  test-workspaces-39:
+    runs-on: ubuntu-20.04
+    needs: [ pre-commit, timestamp ]
+    steps:
+      - name: create_workspaces
+        run: echo "create_workspaces"
+    env:
+      TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
+      VERSION: 39  
+
+  
+  test-workspaces-31:
+    runs-on: ubuntu-20.04
+    needs: [ pre-commit, timestamp ]
+    steps:
+      - name: create_workspaces
+        run: echo "create_workspaces"
+    env:
+      TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
+      VERSION: 39  
+        
+
+  test-38:
+    runs-on: ubuntu-20.04
+    needs: [ test-workspaces-38, timestamp ]
+    steps:
+      - name: create_workspaces
+        run: echo "no_workspace or feature"
+    env:
+      TIMESTAMP: ${{needs.timestamp.outputs.timestamp}}
+      VERSION: 38
+
+  

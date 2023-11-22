@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: sdk
+Version: 0.1
+Summary: My Python SDK for a specific service
+Author: Your Name
+Author-email: your@email.com
+Requires-Dist: pytest-html
+Requires-Dist: requests
+Requires-Dist: pandoc
