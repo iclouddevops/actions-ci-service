@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: web/package.json
+          cache-dependency-path: vue-demo/package.json
       
 
       # - name: Cache node modules
